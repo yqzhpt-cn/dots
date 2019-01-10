@@ -59,7 +59,7 @@ let &undodir = s:undo_dir " set the undodir
 " install vim-plug automatically if not exists
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -69,7 +69,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/LeaderF'
 Plug 'vim-airline/vim-airline'
@@ -104,30 +103,16 @@ colorscheme gruvbox " Colorscheme gruvbox
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Change default arrows
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
 
 let g:NERDTreeWinSize = 30 " Change NERDTree window size
-let g:NERDTreeShowHidden = 1 " Show hiddent files
+let g:NERDTreeShowHidden = 0 " Do not show hiddent files
 let NERDTreeCascadeSingleChildDir = 0 " Not collapse dir
 let NERDTreeCascadeOpenSingleChildDir = 0 " Not cascade open dir
 
 " NERDTree toggle shortcur
 noremap <F2> :NERDTreeToggle<CR><C-W>p
-
-" Change symbols
-let g:NERDTreeIndicatorMapCustom = {
-      \ "Modified"  : "✹",
-      \ "Staged"    : "✚",
-      \ "Untracked" : "✭",
-      \ "Renamed"   : "➜",
-      \ "Unmerged"  : "═",
-      \ "Deleted"   : "✖",
-      \ "Dirty"     : "✗",
-      \ "Clean"     : "✔︎",
-      \ 'Ignored'   : '☒',
-      \ "Unknown"   : "?"
-      \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "          NERDCommenter setting                 "
@@ -162,14 +147,14 @@ let g:airline_theme = 'gruvbox' " Airline Theme
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:rainbow_conf = {
-      \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-      \	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-      \	'operators': '_,_',
-      \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-      \	'separately': {
-      \		'*': {},
+      \ 'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+      \ 'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+      \ 'operators': '_,_',
+      \ 'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+      \ 'separately': {
+      \   '*': {},
       \   'cmake': 0,
-      \	}
+      \ }
       \}
 
 let g:rainbow_active = 1 " Run automatically
@@ -185,7 +170,7 @@ let g:ycm_complete_in_comments = 1 " Complete string
 let g:ycm_min_num_identifier_candidate_chars = 2 " Minimun char nums
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " Scan id from comments and strings
 let g:ycm_collect_identifiers_from_tags_files = 1 " Scan id from tags
-" let g:ycm_key_invoke_completion='<C-Z>' " Custom key bind
+let g:ycm_key_invoke_completion='<C-Z>' " Custom key bind
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
 
 " Apply YCM FixIt
